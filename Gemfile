@@ -50,7 +50,20 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # 静的解析ツール
   gem 'rubocop', require: false
+
+  # セキュリティチェック
+  gem 'brakeman'
+  # Gemバージョンチェック
+  gem 'bundler-audit'
+  # 開発環境にてリクエストの所要時間のチェック
+  gem 'rack-mini-profiler'
+  # デバッグ画面のリッチ化
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  # ER図の自動作成
+  gem 'rails-erd' 
 end
 
 group :test do
