@@ -1,7 +1,14 @@
+<div class="center jumbotron">
 <% provide(:title, "Home") %>
-<h1>News Croller</h1>
-<p>
-  This is the home page for the
-  <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
-  sample application.
-</p>
+<h1>News Crawler</h1>
+<h2>
+This is the home page for the
+<a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
+sample application.
+</h2>
+
+<%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary" %>
+</div>
+
+<%= link_to image_tag("suikoden.jpg", alt: "Rails logo"),
+        'http://rubyonrails.org/' %>
