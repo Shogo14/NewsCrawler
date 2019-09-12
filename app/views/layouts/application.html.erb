@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title><%= yield(:title) %> | News Crawler</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title><%= yield(:title) %> | News Crawler</title>
+    <%= render 'layouts/rails_default' %>
     <%= render 'layouts/shim' %>
   </head>
-
   <body>
   <%= render 'layouts/header' %>
   <div class="container">
