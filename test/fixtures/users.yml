@@ -15,3 +15,8 @@
 #   password_digest: MyString
 #   last_logined: 2019-09-12
 #   delete_flg: false
+michael:
+  first_name: Michael
+  last_name: Example
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>
