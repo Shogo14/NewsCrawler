@@ -1,20 +1,20 @@
 <%= form_for(@user) do |f| %>
     <%= render 'shared/error_messages' %>
 
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, class: 'form-control' %>
+    <%= f.label :姓（first_name） %>
+    <%= f.text_field :first_name, class: 'form-control' ,:placeholder => "新聞" %>
 
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, class: 'form-control' %>
+    <%= f.label :名（last_name） %>
+    <%= f.text_field :last_name, class: 'form-control' ,:placeholder => "九郎" %>
 
-    <%= f.label :email %>
-    <%= f.email_field :email, class: 'form-control' %>
+    <%= f.label :メールアドレス（email） %>
+    <%= f.email_field :email, class: 'form-control' ,:placeholder => "news-love@example.com" %>
 
-    <%= f.label :password %>
-    <%= f.password_field :password, class: 'form-control' %>
+    <%= f.label :パスワード（password） %>
+    <%= f.password_field :password, class: 'form-control',:placeholder => "8桁以上の英数字を入力してください。" %>
 
-    <%= f.label :password_confirmation, "Confirmation" %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %>
+    <%= f.label :password_confirmation, "パスワード確認" %>
+    <%= f.password_field :password_confirmation, class: 'form-control' ,:placeholder => "上と同じパスワードを入力してください。"%>
 
-    <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <%= f.submit "登録する", class: "btn btn-primary" %>
 <% end %>

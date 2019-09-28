@@ -194,3 +194,9 @@ input {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+/*test loginボタンの色変更*/
+.test-login{
+  background: rgb(9, 148, 67);
+  color:#fff;
+}
