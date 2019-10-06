@@ -1,11 +1,13 @@
 <% provide(:title, 'News') %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
+<div class="">
+  <aside class="">
+    <section class="">
       <h1>
-      <%= @newss.title %>
-      <%= crawller %>
-
+        <% @keyword_topics.each do|title,url| %>
+          <p><%= link_to title,url %></p>
+          <%= image_tag get_img_url(url), :size => '300x200' %>
+          <p><%= get_contents(url) %></p>
+        <% end %>
       </h1>
     </section>
   </aside>

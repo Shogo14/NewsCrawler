@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  delete_flg: false
+  keyword: one
+  news: one
+
+two:
+  delete_flg: false
+  keyword: two
+  news: two
