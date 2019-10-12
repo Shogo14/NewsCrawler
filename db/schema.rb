@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_05_132330) do
-
-  create_table "crawling_sources", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "source_url"
-    t.boolean "delete_flg"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2019_10_05_131901) do
 
   create_table "keywords", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "keywords_contents"
@@ -27,7 +20,6 @@ ActiveRecord::Schema.define(version: 2019_10_05_132330) do
   end
 
   create_table "news", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "source_id"
     t.string "title"
     t.string "contents"
     t.string "img_src"
@@ -68,17 +60,13 @@ ActiveRecord::Schema.define(version: 2019_10_05_132330) do
   end
 
   create_table "users_keywords", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "keyword_id"
     t.boolean "delete_flg"
-    t.bigint "user_id"
-    t.bigint "keyword_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["keyword_id"], name: "index_users_keywords_on_keyword_id"
-    t.index ["user_id"], name: "index_users_keywords_on_user_id"
   end
 
   add_foreign_key "news_keywords", "keywords"
   add_foreign_key "news_keywords", "news"
-  add_foreign_key "users_keywords", "keywords"
-  add_foreign_key "users_keywords", "users"
 end

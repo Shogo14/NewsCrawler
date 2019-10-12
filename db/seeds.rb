@@ -20,3 +20,14 @@ User.create!(first_name:  "Example",
                activated: true,
                activated_at: Time.zone.now)
 end
+
+UsersKeyword.create!(
+  user_id: 1,
+  keyword_id: 1,
+  delete_flg: false
+)
+
+Keyword.create!(
+  keywords_contents: "Ruby",
+  delete_flg: false
+)

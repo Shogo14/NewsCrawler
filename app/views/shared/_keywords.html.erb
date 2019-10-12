@@ -1,0 +1,9 @@
+<%= render 'shared/keywords_form' %>
+<% if @user.keywords.any? %>
+        <h3>登録検索ワード</h3>
+        <% @keywords.each do |k| %>
+        <li class="microposts">
+        <%= link_to k.keywords_contents, k.keywords_contents %>
+        </li>
+        <% end %>
+<% end %>

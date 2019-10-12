@@ -42,6 +42,8 @@ group :development do
   # 静的解析ツール
   gem 'rubocop', require: false
 
+  gem 'graphviz', '~> 0.4.0'
+
   # セキュリティチェック
   gem 'brakeman'
   # Gemバージョンチェック

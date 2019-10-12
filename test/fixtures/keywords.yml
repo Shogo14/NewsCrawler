@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  keywords_contents: MyText
+oneokrock:
+  keywords_contents: "one ok rock"
   delete_flg: false
 
-two:
-  keywords_contents: MyText
+ruby:
+  keywords_contents: "ruby"
   delete_flg: false
