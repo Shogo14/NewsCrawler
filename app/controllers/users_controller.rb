@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @keywords = @user.keywords.all
+    @userkeywords = @user.keywords.where(delete_flg: false)
     @keyword = @user.keywords.build if logged_in?
     redirect_to root_url and return unless @user.activated?
   end 

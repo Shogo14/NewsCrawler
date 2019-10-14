@@ -20,7 +20,6 @@
 
 <% 30.times do |n| %>
 news_<%= n %>:
-  source_id: <%= n %>
   title: <%= "News#{n}" %>
   contents: <%= "これは記事番号#{n}です" %>
   img_src: ""

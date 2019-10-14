@@ -6,7 +6,7 @@ class CreateNews < ActiveRecord::Migration[5.2]
       t.string :img_src
       t.string :url
       t.date :delivery_date
-      t.boolean :delete_flg
+      t.boolean :delete_flg, default: false
 
       t.timestamps
     end

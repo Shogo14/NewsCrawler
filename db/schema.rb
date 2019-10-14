@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2019_10_05_131901) do
 
   create_table "keywords", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "keywords_contents"
-    t.boolean "delete_flg"
+    t.boolean "delete_flg", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -25,13 +25,13 @@ ActiveRecord::Schema.define(version: 2019_10_05_131901) do
     t.string "img_src"
     t.string "url"
     t.date "delivery_date"
-    t.boolean "delete_flg"
+    t.boolean "delete_flg", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "news_keywords", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.boolean "delete_flg"
+    t.boolean "delete_flg", default: false
     t.bigint "keyword_id"
     t.bigint "news_id"
     t.datetime "created_at", null: false
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_10_05_131901) do
   create_table "users_keywords", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "keyword_id"
-    t.boolean "delete_flg"
+    t.boolean "delete_flg", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

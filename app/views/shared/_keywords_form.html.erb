@@ -1,5 +1,5 @@
 <%= form_for(@keyword) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
+    <%= render 'shared/error_keyword_messages', object: f.object %>
     <div class="field">
       <%= f.text_field :keywords_contents, placeholder: "キーワードを登録してください。" %>
     </div>
