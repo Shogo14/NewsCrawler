@@ -10,7 +10,6 @@ class KeywordsController < ApplicationController
                 redirect_to current_user
             else
                 flash[:danger] = '登録文字が20文字を越えています'
-                # redirect_to current_user
                 redirect_to current_user
             end
         else
@@ -26,12 +25,11 @@ class KeywordsController < ApplicationController
                 flash[:danger] = '登録済みのキーワードです'
                 redirect_to current_user
             end
-
         end
     end
 
     def destroy
-        @keyword.destroy
+        @userKeyword.destroy
         flash[:success] = "削除しました"
         redirect_to request.referrer || root_url
     end
@@ -46,7 +44,7 @@ class KeywordsController < ApplicationController
         end
         
         def correct_user
-            @keyword = current_user.keywords.find_by(id: params[:id])
-            redirect_to root_url if @keyword.nil?
+            @userKeyword = current_user.users_keywords.find_by(keyword_id: params[:id])
+            redirect_to root_url if @userKeyword.nil?
         end
 end
