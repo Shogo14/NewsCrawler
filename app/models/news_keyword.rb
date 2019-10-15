@@ -1,4 +1,4 @@
 class NewsKeyword < ApplicationRecord
-  belongs_to :keyword
-  belongs_to :news
+    belongs_to :news, optional: true
+    belongs_to :keyword, optional: true
 end

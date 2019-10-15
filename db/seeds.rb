@@ -31,3 +31,22 @@ Keyword.create!(
   keywords_contents: "Ruby",
   delete_flg: false
 )
+
+100.times do |n|
+  keywordId = 1
+  title = "#{n}個目のニュースのタイトルです。"
+  contents = "#{n}個目のニュースのコンテンツです。"
+  img = "img_src#{n}"
+  url = "url#{n}"
+  delDate = Time.zone.now
+  
+  News.create!(
+    title: title,
+    contents: contents,
+    img_src: img,
+    url: url,
+    delivery_date: delDate,
+    delete_flg: false
+  )
+
+end
