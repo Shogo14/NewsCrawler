@@ -9,9 +9,9 @@ RUN apt-get update -qq && \
                        nodejs           
 
 # 作業ディレクトリの作成、設定
-RUN mkdir /NewsScraping
+RUN mkdir /NewsCrawler
 ##作業ディレクトリ名をAPP_ROOTに割り当てて、以下$APP_ROOTで参照
-ENV APP_ROOT /NewsScraping 
+ENV APP_ROOT /NewsCrawler 
 WORKDIR $APP_ROOT
 
 # ホスト側（ローカル）のGemfileを追加する（ローカルのGemfileは【３】で作成）

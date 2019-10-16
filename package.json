@@ -1,5 +1,5 @@
 {
-  "name": "NewsScraping",
+  "name": "NewsCrawler",
   "private": true,
   "dependencies": {}
 }
