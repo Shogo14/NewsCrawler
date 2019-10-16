@@ -1,29 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   source_id: 1
-#   title: MyString
-#   contents: MyString
-#   img_src: MyString
-#   url: MyString
-#   delivery_date: 2019-09-28
-#   delete_flg: false
-
-# two:
-#   source_id: 2
-#   title: MyString
-#   contents: MyString
-#   img_src: MyString
-#   url: MyString
-#   delivery_date: 2019-09-28
-#   delete_flg: false
-
-<% 30.times do |n| %>
-news_<%= n %>:
-  title: <%= "News#{n}" %>
-  contents: <%= "これは記事番号#{n}です" %>
-  img_src: ""
-  url: ""
-  delivery_date: <%= Time.zone.now %>
+one:
+  title: MyString
+  content: MyText
+  img_src: MyString
+  url: MyString
+  delivery_date: 2019-10-16
   delete_flg: false
-<% end %>
+  keyword: one
+
+two:
+  title: MyString
+  content: MyText
+  img_src: MyString
+  url: MyString
+  delivery_date: 2019-10-16
+  delete_flg: false
+  keyword: two

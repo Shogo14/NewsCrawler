@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_15_225041) do
+ActiveRecord::Schema.define(version: 2019_10_16_052957) do
 
   create_table "keywords", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "keywords_contents"
@@ -21,23 +21,15 @@ ActiveRecord::Schema.define(version: 2019_10_15_225041) do
 
   create_table "news", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
-    t.string "contents"
+    t.text "content"
     t.string "img_src"
     t.string "url"
     t.date "delivery_date"
-    t.boolean "delete_flg", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "news_keywords", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.boolean "delete_flg", default: false
+    t.boolean "delete_flg"
     t.bigint "keyword_id"
-    t.bigint "news_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["keyword_id"], name: "index_news_keywords_on_keyword_id"
-    t.index ["news_id"], name: "index_news_keywords_on_news_id"
+    t.index ["keyword_id"], name: "index_news_on_keyword_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -67,6 +59,5 @@ ActiveRecord::Schema.define(version: 2019_10_15_225041) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "news_keywords", "keywords"
-  add_foreign_key "news_keywords", "news"
+  add_foreign_key "news", "keywords"
 end

@@ -3,6 +3,5 @@ class Keyword < ApplicationRecord
                                     uniqueness: { case_sensitive: false }
     has_many :users_keywords
     has_many :users, through: :users_keywords
-    has_many :news_keywords
-    has_many :news, through: :news_keywords
+    has_many :news
 end

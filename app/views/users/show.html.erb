@@ -11,4 +11,15 @@
       <%= render 'shared/keywords' %>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.keywords.any? %>
+      <h3>Newsタイムライン</h3>
+      <% @userkeywords.each do |uk| %>
+      <ol class="microposts">
+        <%= render @news %>
+      </ol>
+      <%= will_paginate @news %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

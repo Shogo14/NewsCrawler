@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @userkeywords = @user.keywords.where(delete_flg: false)
+    @news = News.where(delete_flg: false).paginate(page: params[:page])
     @keyword = @user.keywords.build if logged_in?
     redirect_to root_url and return unless @user.activated?
   end 
