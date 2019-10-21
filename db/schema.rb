@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_10_16_052957) do
 
   create_table "keywords", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "keywords_contents"
+    t.text "name"
     t.boolean "delete_flg", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

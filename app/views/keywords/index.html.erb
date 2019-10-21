@@ -1,0 +1,27 @@
+<% provide(:title, 'All Keyword') %>
+<h1>キーワード一覧</h1>
+<%= render 'shared/keywords_form' %>
+<div class="">
+<table  class="table keyword_list">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">キーワード</th>
+            <th scope="col">削除</th>
+        </tr>
+    </thead>
+<tbody>
+<% if @keywords.any? %>
+    <% @keywords.each do |keyword| %>
+        <tr>
+            <th scope="row">
+            <%= keyword.name %>
+            </th>
+            <td>
+            <%= link_to "X", keyword, method: :delete,data: { confirm: "削除しますか?" } %>
+            </td>
+        </tr>
+    <% end %>
+<% end %>
+</tbody>
+</table>
+</div>

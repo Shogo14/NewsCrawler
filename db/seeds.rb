@@ -7,7 +7,7 @@ User.create!(first_name:  "Example",
              activated: true,
              activated_at: Time.zone.now)
              
-99.times do |n|
+50.times do |n|
   first_name  = Faker::Name.first_name
   last_name  = Faker::Name.last_name
   email = "example-#{n+1}@railstutorial.org"
@@ -21,25 +21,32 @@ User.create!(first_name:  "Example",
                activated_at: Time.zone.now)
 end
 
-UsersKeyword.create!(
-  user_id: 1,
-  keyword_id: 1,
+1.upto(3) do |n|
+  UsersKeyword.create!(
+    user_id: 1,
+    keyword_id: n,
+    delete_flg: false
+  )
+end
+
+Keyword.create!(
+  name: "Ruby",
   delete_flg: false
 )
 
 Keyword.create!(
-  keywords_contents: "Ruby",
+  name: "PHP",
   delete_flg: false
 )
 
 Keyword.create!(
-  keywords_contents: "PHP",
+  name: "JavaScript",
   delete_flg: false
 )
 
 
 keywordId = 1
-100.times do |n|
+50.times do |n|
   title = "#{n}個目のRubyニュースのタイトルです。"
   contents = "#{n}個目のRubyニュースのコンテンツです。"
   img = "img_src#{n}"
@@ -75,5 +82,4 @@ keywordId = 2
     delivery_date: delDate,
     delete_flg: false
   )
-
 end

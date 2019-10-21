@@ -12,7 +12,7 @@
         <% @userkeywords.each do |uk| %>
                 <tr>
                         <th scope="row">
-                        <%= link_to uk.keywords_contents, uk.keywords_contents %>
+                        <%= link_to uk.name, uk.name %>
                         </th>
                         <% if current_user?(@user) %>
                                 <td>
