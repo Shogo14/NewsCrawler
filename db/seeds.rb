@@ -40,46 +40,8 @@ Keyword.create!(
 )
 
 Keyword.create!(
-  name: "JavaScript",
+  name: "ONE OK ROCK",
   delete_flg: false
 )
 
 
-keywordId = 1
-50.times do |n|
-  title = "#{n}個目のRubyニュースのタイトルです。"
-  contents = "#{n}個目のRubyニュースのコンテンツです。"
-  img = "img_src#{n}"
-  url = "url#{n}"
-  delDate = Time.zone.now
-  
-  News.create!(
-    title: title,
-    content: contents,
-    img_src: img,
-    url: url,
-    keyword_id: keywordId,
-    delivery_date: delDate,
-    delete_flg: false
-  )
-
-end
-
-keywordId = 2
-50.times do |n|
-  title = "#{n}個目のPHPニュースのタイトルです。"
-  contents = "#{n}個目のPHPニュースのコンテンツです。"
-  img = "img_src#{n}"
-  url = "url#{n}"
-  delDate = Time.zone.now
-  
-  News.create!(
-    title: title,
-    content: contents,
-    img_src: img,
-    url: url,
-    keyword_id: keywordId,
-    delivery_date: delDate,
-    delete_flg: false
-  )
-end

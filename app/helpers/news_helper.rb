@@ -1,6 +1,8 @@
 module NewsHelper
     require 'open-uri'
     require 'nokogiri'
+    require 'uri'
+    require 'time'
 
     #TOPページからテーマとURLを取得
     def top_topic_url(url)
@@ -15,6 +17,36 @@ module NewsHelper
             arr.store(title,link)
         end
         return arr
+    end
+
+    def keyword_get_news(keyword: "",keyword_id: nil)
+        url = make_url(keyword)
+        titles_urls = keyword_topic_url(url)
+        titles_urls.each do |title,url|
+            content = get_contents(url)
+            img_src = get_img_url(url)
+            delivery_date = get_deliveryDate(url)
+            keyword_insert(title:         title,
+                           content:       content,
+                           img_src:       img_src,
+                           url:           url,
+                           delivery_date: delivery_date,
+                           delete_flg:    false,
+                           keyword_id:    keyword_id
+                           )
+        end
+    end
+
+    #Newsテーブルにデータをインサートする
+    def keyword_insert(title: nil,content: nil,img_src: nil,url: nil,delivery_date: nil,delete_flg: false,keyword_id: nil)
+        news = News.create(title:         title,
+                        content:       content, 
+                        img_src:       img_src,
+                        url:           url, 
+                        delivery_date: delivery_date, 
+                        delete_flg:    delete_flg ,
+                        keyword_id:    keyword_id
+                        )
     end
 
     # KEYWORDからタイトルとURLを取得
@@ -47,6 +79,7 @@ module NewsHelper
         return contents
     end
 
+    # URLから画像のソースを取得
     def get_img_url(url)
         url = get_detail_link(url)
         doc = get_object(url)
@@ -57,6 +90,20 @@ module NewsHelper
         end
 
         return img_src
+    end
+
+    # URLから配信日を取得
+    def get_deliveryDate(url)
+        url = get_detail_link(url)
+        doc = get_object(url)
+        delivery_date = nil
+
+        doc.css('div.hdLogoWrap p.source').each {|node| delivery_date = node.text}
+        unless delivery_date.nil?
+            delivery_date = delivery_date.sub!(/配信/, '').sub!(/\([月火水木金土日]\)/, '')  
+            delivery_date = Time.strptime(delivery_date, "%m/%d %H:%M")
+        end
+        return delivery_date
     end
 
     #「続きを読む」リンクを探す
@@ -76,7 +123,7 @@ module NewsHelper
 
 
     private
-
+        # URLからDOM要素を取得
         def get_object(url)
             charset = nil
             html = open(url) do |f|
@@ -94,5 +141,12 @@ module NewsHelper
                 nlink = node.attribute('href').value
             end
             return nlink  
+        end
+
+          # キーワードごとのYahoo用ニュースURLを返す
+        def make_url(keyword)
+            ec_keyword = URI.encode(keyword)
+            url = "https://news.yahoo.co.jp/search/?p=#{ec_keyword}&ei=utf-8&fr=news_sw"
+            return url
         end
 end
