@@ -1,10 +1,15 @@
 class NewsController < ApplicationController
+    before_action :logged_in_user
+    
     def index
-        @top_topic_url = top_topic_url('https://news.yahoo.co.jp/')
-        keyword_url = make_url("one ok rock")
-        @keyword_topics = keyword_topic_url(keyword_url)
+        @news = News.where(keyword_id: users_keyword_ids)
     end
     def show
-        @newss = News.all
+        @news = News.find(params[:id])
     end
+
+    private
+        def users_keyword_ids
+            current_user.users_keywords.ids
+        end
 end

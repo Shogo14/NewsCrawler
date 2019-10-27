@@ -1,14 +1,4 @@
 <% provide(:title, 'News') %>
-<div class="">
-  <aside class="">
-    <section class="">
-      <h1>
-        <% @keyword_topics.each do|title,url| %>
-          <p><%= link_to title,url %></p>
-          <%= image_tag get_img_url(url), :size => '300x200' %>
-          <p>配信日　<%= get_deliveryDate(url)%></p>
-        <% end %>
-      </h1>
-    </section>
-  </aside>
-</div>
+<ul class="">
+    <%= render @news %>
+</ul>

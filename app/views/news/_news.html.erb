@@ -1,7 +1,8 @@
-<li id="news-<%= news.id %>">
-  <span class="user"><%= news.title%></span>
-  <span class="content"><%= news.content %></span>
-  <span class="timestamp">
-    Delivery <%= news.created_at %>
-  </span>
-</li>
+<div class="card">
+  <img src="<%= news.img_src %>" class="card-img-top" alt="No Image">
+  <div class="card-body">
+    <h5 class="card-title"><%= news.title %></h5>
+    <%= link_to "Go somewhere", news , class: "btn btn-primary" %>
+    <p class="card-text"><%= news.content%></p>
+  </div>
+</div>
