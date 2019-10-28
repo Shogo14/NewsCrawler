@@ -21,8 +21,23 @@ class SessionsController < ApplicationController
     end
   end
 
+
   def destroy
     log_out if logged_in?
     redirect_to root_url
   end
+  
+  def testlogin
+    test_login
+  end
+
+    private
+
+    def test_login
+      user = User.find_by(email: "example@railstutorial.org")
+      user.authenticate("foobarzoo")
+      log_in user
+      remember(user)
+      redirect_back_or user
+    end
 end
