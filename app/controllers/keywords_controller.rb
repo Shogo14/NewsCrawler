@@ -14,6 +14,8 @@ class KeywordsController < ApplicationController
 
     def show
         @keyword = Keyword.find(params[:id])
+        
+        @keywords = Keyword.where(id: users_keyword_ids)
     end
 
     def create

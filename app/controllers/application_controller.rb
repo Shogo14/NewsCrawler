@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
     include SessionsHelper
     include NewsHelper
     include KeywordsHelper
+    
+    def users_keyword_ids
+        current_user.users_keywords.ids
+    end
 
     private
     # ログイン済みユーザーかどうか確認

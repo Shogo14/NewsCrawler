@@ -13,4 +13,10 @@ class KeywordTest < ActiveSupport::TestCase
     @keyword.name = "     "
     assert_not @keyword.valid?
   end
+
+  
+  test "キーワードが21文字以上の場合" do
+    @keyword.name = "a"*21
+    assert_not @keyword.valid?
+  end
 end

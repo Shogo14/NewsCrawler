@@ -10,5 +10,13 @@ module ApplicationHelper
     end
   end
 
+  def each_show_news(id)
+    news = News.where(keyword_id: id)
+  end
+
+  def active_class?(id)
+    return 'active' if params[:id] == id.to_s
+  end
+
 
 end

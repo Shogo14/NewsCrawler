@@ -1,4 +1,14 @@
-<% provide(:title, 'Keyword Detail') %>
-<h1>キーワード詳細</h1>
+<% provide(:title, "#{@keyword.name} News") %>
+<h1><%= @keyword.name %></h1>
 
-<h1><%= @users_keywords.keyword_id %></h1>
+<ul class="nav nav-pills">
+  <% @keywords.each do |keyword| %>
+    <li class="nav-item">
+      <%= link_to keyword.name, keyword ,class: "nav-link #{active_class?(keyword.id)}" %>
+    </li>
+  <% end %>
+</ul>
+
+<% @news = each_show_news(params[:id]) %>
+<%= render @news %>
+

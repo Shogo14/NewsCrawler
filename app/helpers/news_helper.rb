@@ -4,6 +4,7 @@ module NewsHelper
     require 'uri'
     require 'time'
 
+
     #TOPページからテーマとURLを取得
     def top_topic_url(url)
 

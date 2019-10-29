@@ -14,7 +14,7 @@
     <% @keywords.each do |keyword| %>
         <tr>
             <th scope="row">
-            <%= keyword.name %>
+            <%= link_to keyword.name, keyword %>
             </th>
             <td>
             <%= link_to "X", keyword, method: :delete,data: { confirm: "削除しますか?" } %>

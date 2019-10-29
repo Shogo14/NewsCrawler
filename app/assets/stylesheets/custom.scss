@@ -278,3 +278,13 @@ span.picture {
 .card-title{
   font-weight: bold;
 }
+
+.navbar-inverse {
+  background-color: rgb(32, 46, 245);
+  border-color: rgb(1, 17, 250);
+}
+
+.nav-pills .nav-link.active {
+  color: #fff;
+  background-color: #007bff;
+}

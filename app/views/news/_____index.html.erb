@@ -1,0 +1,24 @@
+<% provide(:title, 'News') %>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+<% @keywords.each do |keyword| %>
+  <li class="nav-item">
+    <a class="nav-link active" id="<%= keyword.id %>-tab" data-toggle="tab" href="#<%= keyword.id%>_content" role="tab" aria-controls="<%= keyword.id%>_content" aria-selected="true"><%= keyword.name %></a>
+  </li>
+<% end %>
+</ul>
+
+<div class="tab-content">
+<% @keywords.each do |keyword| %>
+  <div class="tab-pane active" id="<%= keyword.id%>_content" role="tabpanel" aria-labelledby="<%= keyword.id %>-tab">
+  <% @news = each_show_news(keyword.id) %>
+  <%= render @news %>
+  <% end %>
+</div>
+
+<script>
+$('#myTab a').on('click', function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+</script>

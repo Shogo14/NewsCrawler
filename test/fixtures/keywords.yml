@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 oneokrock:
-  keywords_contents: "one ok rock"
+  name: "one ok rock"
   delete_flg: false
 
 ruby:
-  keywords_contents: "ruby"
+  name: "ruby"
   delete_flg: false

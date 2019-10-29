@@ -1,4 +1,19 @@
 <% provide(:title, 'News') %>
-<ul class="">
-    <%= render @news %>
+<h1>ニュース一覧</h1>
+
+<ul class="nav nav-pills nav-fill">
+  <% @keywords.each do |keyword| %>
+  <li class="nav-item">
+    <%= link_to keyword.name, keyword ,class: 'nav-link' %>
+  </li>
+  <% end %>
 </ul>
+
+<div class="tab-content" id="myTabContent">
+  <% @keywords.each do |keyword| %>
+    <div class="tab-pane fade show active" id="<%= keyword.id%>_content" role="tabpanel" aria-labelledby="<%= keyword.id %>-tab">
+    <% @news = each_show_news(keyword.id) %>
+    <%= render @news %>
+    </div>
+  <% end %>
+</div>
