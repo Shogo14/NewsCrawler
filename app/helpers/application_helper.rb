@@ -10,12 +10,9 @@ module ApplicationHelper
     end
   end
 
-  def each_show_news(id)
-    news = News.where(keyword_id: id)
-  end
-
   def active_class?(id)
-    return 'active' if params[:id] == id.to_s
+    #0の場合はAllをactiveとする
+    return 'active' if params[:id] == id.to_s || id.to_s == "0"
   end
 
 

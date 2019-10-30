@@ -70,12 +70,17 @@ module NewsHelper
         url = get_detail_link(url)
         doc = get_object(url)
         contents = ""
-
+        # ynDetailText
         doc.css('.yjDirectSLinkTarget').each {|dom| contents << dom.content} 
+
+        if contents == ""
+            doc.css('.ynDetailText').each {|dom| contents << dom.content} 
+        end
 
         nlink = get_next(doc)
 
         contents << get_contents(nlink) unless nlink.nil?
+
 
         return contents
     end
@@ -88,6 +93,12 @@ module NewsHelper
 
         doc.css('div.PhotosContainerMain img').each do |node|
             img_src = node.attribute('src').value
+        end
+
+        if img_src.nil?
+            doc.css('div#mainPhoto img').each do |node|
+                img_src = node.attribute('src').value
+            end
         end
 
         return img_src
@@ -103,7 +114,12 @@ module NewsHelper
         unless delivery_date.nil?
             delivery_date = delivery_date.sub!(/配信/, '').sub!(/\([月火水木金土日]\)/, '')  
             delivery_date = Time.strptime(delivery_date, "%m/%d %H:%M")
+        else
+            doc.css('p.ymuiDate').each {|node| delivery_date = node.text}
+            delivery_date = delivery_date.sub!(/配信/, '').sub!(/\([月火水木金土日]\)/, '').sub!(/時事通信/, '') 
+            delivery_date = Time.strptime(delivery_date, "%m/%d %H:%M")
         end
+        
         return delivery_date
     end
 

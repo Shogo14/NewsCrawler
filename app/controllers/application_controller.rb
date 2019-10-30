@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     include KeywordsHelper
     
     def users_keyword_ids
-        current_user.users_keywords.ids
+        current_user.users_keywords.pluck(:keyword_id)
     end
 
     private

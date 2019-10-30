@@ -1,14 +1,7 @@
 <% provide(:title, "#{@keyword.name} News") %>
 <h1><%= @keyword.name %></h1>
-
-<ul class="nav nav-pills">
-  <% @keywords.each do |keyword| %>
-    <li class="nav-item">
-      <%= link_to keyword.name, keyword ,class: "nav-link #{active_class?(keyword.id)}" %>
-    </li>
-  <% end %>
-</ul>
-
-<% @news = each_show_news(params[:id]) %>
+<%= will_paginate @news %>
+<%= render "keywords_tab" %>
 <%= render @news %>
+<%= will_paginate @news %>
 

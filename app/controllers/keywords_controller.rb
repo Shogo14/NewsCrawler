@@ -14,8 +14,8 @@ class KeywordsController < ApplicationController
 
     def show
         @keyword = Keyword.find(params[:id])
-        
         @keywords = Keyword.where(id: users_keyword_ids)
+        @news = News.where(keyword_id: @keyword.id).paginate(page: params[:page])
     end
 
     def create

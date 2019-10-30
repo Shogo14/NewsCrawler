@@ -1,8 +1,27 @@
 <div class="card">
-  <img src="<%= news.img_src %>" class="card-img-top" alt="No Image">
-  <div class="card-body">
-    <h5 class="card-title"><%= news.title %></h5>
-    <%= link_to "Go somewhere", news , class: "btn btn-primary" %>
-    <p class="card-text"><%= news.content%></p>
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <%= link_to "全文を読む", news , class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= news.url %>" target="_blank">元記事リンクへ</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="row no-gutters">
+  <div class="row-content">
+    <div class="col-md-4">
+      <img src="<%= news.img_src %>" class="card-img" alt="No Image">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title"><%= news.title %></h4>
+        <p class="card-text news-content"><%= news.content%></p>
+        <p class="card-text"><small class="text-muted"><%= news.delivery_date %></small></p>
+      </div>
+    </div>
+  </div>
   </div>
 </div>

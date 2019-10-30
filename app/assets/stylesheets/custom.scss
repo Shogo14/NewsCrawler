@@ -40,7 +40,7 @@ body {
   h1 {
     font-size: 3em;
     letter-spacing: -2px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     text-align: center;
   }
   
@@ -259,24 +259,51 @@ span.picture {
 }
 
 .card{
-  width:25%;
-  float: left;
-  overflow:hidden;
+  // width:25%;
+  // float: left;
+  // overflow:hidden;
   height: 300px;
-  text-align: center;
+  // text-align: center;
   border:solid 1px #aaa;
-  border-radius:0.5em;
-  padding-right:10px;
-  padding-left:10px;
+  // border-radius:0.5em;
+  // padding-right:10px;
+  // padding-left:10px;
+  margin-bottom: 10px;
 }
 
-.card-img-top{
-  width:auto;
-  height: 50%;
+.row-content{
+  
+}
+
+.card-img{
+  // width:auto;
+  // height: 50%;
+  width:90%;
+  height: auto;
 }
 
 .card-title{
   font-weight: bold;
+}
+
+.card-header{
+  background-color: rgba(0,0,0,.03);
+  border-bottom: 1px solid #aaa;
+  font-weight: bold;
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+}
+
+
+.no-gutters{
+  padding:5px;
+  overflow-y: scroll;
+  height: 242px;
+}
+
+.row{
+  margin-right:5px;
+  margin-left:5px;
 }
 
 .navbar-inverse {
@@ -287,4 +314,14 @@ span.picture {
 .nav-pills .nav-link.active {
   color: #fff;
   background-color: #007bff;
+}
+
+
+.clear{
+  clear:left;
+}
+
+.news-content{
+  white-space:pre-wrap;
+  // text-overflow: ellipsis; 
 }

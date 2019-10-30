@@ -1,25 +1,29 @@
-<% provide(:title, @user.first_name) %>
+<% provide(:title, current_user.first_name) %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= gravatar_for @user %>
-        <%= @user.first_name + " " + @user.last_name %>
+        <%= gravatar_for current_user %>
+        <%= current_user.first_name + " " + current_user.last_name %>
       </h1>
     </section>
     <section>
       <%= render 'shared/keywords' %>
     </section>
   </aside>
+
   <div class="col-md-8">
-    <% if @user.keywords.any? %>
+    <% if current_user.keywords.any? %>
       <h3>Newsタイムライン</h3>
-      <% @userkeywords.each do |uk| %>
-      <ol class="microposts">
-        <%= render @news %>
-      </ol>
       <%= will_paginate @news %>
+      <% @news.each do |news| %>
+      <ol class="microposts">
+        <%= render news %>
+      </ol>
       <% end %>
+      <div class="clear">
+      </div>
+      <%= will_paginate @news %>
     <% end %>
   </div>
 </div>

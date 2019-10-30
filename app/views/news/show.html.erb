@@ -3,7 +3,7 @@
   <aside class="col-md-12">
     <section class="user_info">
       <h1><%= @news.title %></h1>
-      <%= image_tag @news.img_src %>
+      <img src = "<%= @news.img_src %>">
       <p>配信日：<%= @news.delivery_date %></p>
       <%= link_to "リンクへ飛ぶ", @news.url %>
       <p><%= @news.content %></p>

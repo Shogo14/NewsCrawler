@@ -8,15 +8,15 @@
                 </tr>
         </thead>
 <tbody>
-<% if @user.keywords.any? %>
-        <% @userkeywords.each do |uk| %>
+<% if current_user.keywords.any? %>
+        <% @keywords.each do |keyword| %>
                 <tr>
                         <th scope="row">
-                        <%= link_to uk.name, uk.name %>
+                        <%= link_to keyword.name, keyword.name %>
                         </th>
-                        <% if current_user?(@user) %>
+                        <% if current_user?(current_user) %>
                                 <td>
-                                <%= link_to "X", uk, method: :delete,data: { confirm: "削除しますか?" } %>
+                                <%= link_to "X", keyword, method: :delete,data: { confirm: "削除しますか?" } %>
                                 </td>
                         <% end %>
                 </tr>

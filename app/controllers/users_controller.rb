@@ -8,11 +8,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @userkeywords = @user.keywords.where(delete_flg: false)
-    @news = News.where(delete_flg: false).paginate(page: params[:page])
-    @keyword = @user.keywords.build if logged_in?
-    redirect_to root_url and return unless @user.activated?
+    @keywords = current_user.keywords
+    @news = News.where(keyword_id: @keywords.ids).order(delivery_date: "DESC").paginate(page: params[:page])
+    @keyword = current_user.keywords.build if logged_in?
+    redirect_to root_url and return unless current_user.activated?
   end 
 
   def new

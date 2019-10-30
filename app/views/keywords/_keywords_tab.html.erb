@@ -1,0 +1,13 @@
+<ul class="nav nav-pills nav-fill">
+
+  <li class="nav-item">
+    <%= link_to "ALL", news_index_path ,class: "nav-link #{active_class?(@news_id)}" %>
+  </li>
+
+  <% @keywords.each do |keyword| %>
+  <li class="nav-item">
+    <%= link_to keyword.name, keyword ,class: "nav-link #{active_class?(keyword.id)}" %>
+  </li>
+  <% end %>
+
+</ul>
