@@ -19,9 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 ENV.each { |k, v| env(k, v) }
-set :output, error: 'log/crontab_error.log', standard: 'log/crontab.log'
+set :output, error: "log/crontab_error.log", standard: "log/crontab.log"
 set :environment, :development
 
 every 5.minute do
-    rake "news_crawling:get_all_news"
+  rake "news_crawling:get_all_news"
 end

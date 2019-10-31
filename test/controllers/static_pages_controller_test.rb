@@ -1,10 +1,9 @@
-require 'test_helper'
+require "test_helper"
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   def setup
     @base_title = "News Crawler"
   end
-
 
   test "should get home" do
     get root_path
@@ -23,6 +22,4 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "title", "About | #{@base_title}"
   end
-
-
 end

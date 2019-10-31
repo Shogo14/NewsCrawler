@@ -10,14 +10,14 @@
 <% if current_user.keywords.any? %>
 <% own_keywords.each do |keyword| %>
 <tr>
-<th scope="row">
-<%= link_to keyword.name, keyword %>
-</th>
-<% if current_user?(current_user) %>
-<td>
-<%= link_to "X", keyword, method: :delete,data: { confirm: "削除しますか?" } %>
-</td>
-<% end %>
+        <th scope="row">
+                <%= link_to keyword.name, keyword %>
+        </th>
+        <% if current_user?(current_user) %>
+                <td>
+                <%= link_to "X", keyword, method: :delete,data: { confirm: "削除しますか?" } %>
+                </td>
+        <% end %>
 </tr>
 <% end %>
 <% end %>

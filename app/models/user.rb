@@ -1,22 +1,22 @@
 class User < ApplicationRecord
-    attr_accessor :remember_token, :activation_token, :reset_token
-    before_save   :downcase_email
-    before_create :create_activation_digest
-    validates :first_name,  presence: true, length: { maximum: 50 }
-    validates :last_name,   presence: true, length: { maximum: 50 }
-    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-    validates :email, presence: true, length: { maximum: 255 },
-                      format: { with: VALID_EMAIL_REGEX },
-                      uniqueness: { case_sensitive: false }
-    has_secure_password
-    validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
-    has_many :users_keywords
-    has_many :keywords, through: :users_keywords
+  attr_accessor :remember_token, :activation_token, :reset_token
+  before_save :downcase_email
+  before_create :create_activation_digest
+  validates :first_name, presence: true, length: { maximum: 50 }
+  validates :last_name, presence: true, length: { maximum: 50 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+  has_secure_password
+  validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
+  has_many :users_keywords
+  has_many :keywords, through: :users_keywords
 
-      # 渡された文字列のハッシュ値を返す
+  # 渡された文字列のハッシュ値を返す
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
+      BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
@@ -56,7 +56,7 @@ class User < ApplicationRecord
   # パスワード再設定の属性を設定する
   def create_reset_digest
     self.reset_token = User.new_token
-    update_columns(reset_digest:  User.digest(reset_token), reset_sent_at: Time.zone.now)
+    update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
   end
 
   # パスワード再設定のメールを送信する
@@ -71,14 +71,14 @@ class User < ApplicationRecord
 
   private
 
-    # メールアドレスをすべて小文字にする
-    def downcase_email
-      self.email.downcase!
-    end
+  # メールアドレスをすべて小文字にする
+  def downcase_email
+    self.email.downcase!
+  end
 
-    # 有効化トークンとダイジェストを作成および代入する
-    def create_activation_digest
-      self.activation_token  = User.new_token
-      self.activation_digest = User.digest(activation_token)
-    end
+  # 有効化トークンとダイジェストを作成および代入する
+  def create_activation_digest
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest(activation_token)
+  end
 end
