@@ -1,11 +1,8 @@
 <%= form_for(@user) do |f| %>
     <%= render 'shared/error_messages' %>
 
-    <%= f.label :姓（first_name） %>
-    <%= f.text_field :first_name, class: 'form-control' ,:placeholder => "新聞" %>
-
-    <%= f.label :名（last_name） %>
-    <%= f.text_field :last_name, class: 'form-control' ,:placeholder => "九郎" %>
+    <%= f.label :名前（name） %>
+    <%= f.text_field :name, class: 'form-control' ,:placeholder => "新聞九郎" %>
 
     <%= f.label :メールアドレス（email） %>
     <%= f.email_field :email, class: 'form-control' ,:placeholder => "news-love@example.com" %>

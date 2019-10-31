@@ -8,8 +8,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   test "invalid signup information" do
     get signup_path
     assert_no_difference "User.count" do
-      post users_path, params: { user: { first_name: "",
-                                         last_name: "",
+      post users_path, params: { user: { name: "",
                                          email: "user@invalid",
                                          password: "foo",
                                          password_confirmation: "bar" } }
@@ -22,8 +21,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   test "valid signup information with account activation" do
     get signup_path
     assert_difference "User.count", 1 do
-      post users_path, params: { user: { first_name: "Example",
-                                         last_name: "User",
+      post users_path, params: { user: { name: "ExampleUser",
                                          email: "user11@example.com",
                                          password: "password",
                                          password_confirmation: "password" } }

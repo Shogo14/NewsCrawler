@@ -1,23 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # one:
-#   first_name: MyString
-#   last_name: MyString
+#   name: MyString
 #   email: MyString
 #   password_digest: MyString
 #   last_logined: 2019-09-12
 #   delete_flg: false
 
 # two:
-#   first_name: MyString
-#   last_name: MyString
+#   name: MyString
 #   email: MyString
 #   password_digest: MyString
 #   last_logined: 2019-09-12
 #   delete_flg: false
 michael:
-  first_name: Michael
-  last_name: Example
+  name: MichaelExample
   email: michael@example.com
   password_digest: <%= User.digest('password') %>
   admin: true
@@ -26,24 +23,21 @@ michael:
 
   
 archer:
-  first_name: Sterling
-  last_name: Archer
+  name: SterlingArcher
   email: duchess@example.gov
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
 
 lana:
-  first_name: Lana 
-  last_name: Kane
+  name: Lana Kane
   email: hands@example.gov
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
 
 malory:
-  first_name: Malory 
-  last_name: Archer
+  name: MaloryArcher 
   email: boss@example.gov
   password_digest: <%= User.digest('password') %>
   activated: true
@@ -51,8 +45,7 @@ malory:
 
 <% 30.times do |n| %>
 user_<%= n %>:
-  first_name:  <%= "User" %>
-  last_name:  <%= "#{n}" %>
+  name:  <%= "User#{n}" %>
   email: <%= "user-#{n}@example.com" %>
   password_digest: <%= User.digest('password') %>
   activated: true
@@ -60,8 +53,7 @@ user_<%= n %>:
 <% end %>
 
 non_activated:
- first_name: Non
- last_name: Activated
+ name: NonActivated
  email: non_activated@example.gov
  password_digest: <%= User.digest('password') %>
  activated: false
