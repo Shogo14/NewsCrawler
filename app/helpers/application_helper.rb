@@ -15,5 +15,10 @@ module ApplicationHelper
     return 'active' if params[:id] == id.to_s || id.to_s == "0"
   end
 
+  #自分が所有するキーワードを返す
+  def own_keywords
+    current_user.keywords.order(created_at: "asc")
+  end
+
 
 end

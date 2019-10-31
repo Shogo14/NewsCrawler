@@ -3,10 +3,6 @@ class KeywordsController < ApplicationController
     before_action :correct_user,   only: :destroy
     def index
         @keyword = Keyword.new
-
-        users_keywords = current_user.users_keywords.where(delete_flg: false)
-        keyword_ids = users_keywords.map {|uk| uk.keyword_id}
-        @keywords = Keyword.find(keyword_ids)
     end
 
     def edit

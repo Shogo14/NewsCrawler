@@ -1,12 +1,12 @@
 <% provide(:title, current_user.first_name) %>
-<div class="row">
+<div class="row jumbotron">
   <aside class="col-md-12">
-    <section class="user_info">
+    <section class="news-info">
       <h1><%= @news.title %></h1>
       <img src = "<%= @news.img_src %>">
       <p>配信日：<%= @news.delivery_date %></p>
       <%= link_to "リンクへ飛ぶ", @news.url %>
-      <p><%= @news.content %></p>
+      <p class="news-content"><%= @news.content %></p>
     </section>
   </aside>
 </div>

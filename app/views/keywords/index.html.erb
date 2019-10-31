@@ -1,6 +1,6 @@
 <% provide(:title, 'All Keyword') %>
 <h1>キーワード一覧</h1>
-<%= render 'shared/keywords_form' %>
+<%= render 'keywords_form' %>
 <div class="">
 <table  class="table keyword_list">
     <thead class="thead-dark">
@@ -10,8 +10,8 @@
         </tr>
     </thead>
 <tbody>
-<% if @keywords.any? %>
-    <% @keywords.each do |keyword| %>
+<% if own_keywords.any? %>
+    <% own_keywords.each do |keyword| %>
         <tr>
             <th scope="row">
             <%= link_to keyword.name, keyword %>

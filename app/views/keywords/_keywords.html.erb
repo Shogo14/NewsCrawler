@@ -1,3 +1,4 @@
+<h3>登録済み検索キーワード</h3>
 <table  class="table">
         <thead class="thead-dark">
                 <tr>
@@ -6,19 +7,19 @@
                 </tr>
         </thead>
 <tbody>
-<% if @user.keywords.any? %>
-        <% @userkeywords.each do |uk| %>
-                <tr>
-                        <th scope="row">
-                        <%= link_to uk.keywords_contents, uk.keywords_contents %>
-                        </th>
-                        <% if current_user?(@user) %>
-                                <td>
-                                <%= link_to "X", uk, method: :delete,data: { confirm: "削除しますか?" } %>
-                                </td>
-                        <% end %>
-                </tr>
-        <% end %>
+<% if current_user.keywords.any? %>
+<% own_keywords.each do |keyword| %>
+<tr>
+<th scope="row">
+<%= link_to keyword.name, keyword %>
+</th>
+<% if current_user?(current_user) %>
+<td>
+<%= link_to "X", keyword, method: :delete,data: { confirm: "削除しますか?" } %>
+</td>
+<% end %>
+</tr>
+<% end %>
 <% end %>
 </tbody>
 </table>

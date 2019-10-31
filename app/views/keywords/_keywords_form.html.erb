@@ -1,0 +1,8 @@
+<h2>キーワード登録</h2>
+<%= form_for(@keyword) do |f| %>
+    <%= render 'shared/error_keyword_messages', object: f.object %>
+    <div class="field">
+      <%= f.text_field :name, placeholder: "キーワードを登録してください。" %>
+    </div>
+    <%= f.submit "登録", class: "btn btn-primary" %>
+<% end %>

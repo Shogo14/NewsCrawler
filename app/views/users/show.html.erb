@@ -8,7 +8,8 @@
       </h1>
     </section>
     <section>
-      <%= render 'shared/keywords' %>
+      <%= render 'keywords/keywords_form' %>
+      <%= render 'keywords/keywords' %>
     </section>
   </aside>
 
@@ -17,7 +18,7 @@
       <h3>Newsタイムライン</h3>
       <%= will_paginate @news %>
       <% @news.each do |news| %>
-      <ol class="microposts">
+      <ol class="news">
         <%= render news %>
       </ol>
       <% end %>
