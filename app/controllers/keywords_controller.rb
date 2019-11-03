@@ -1,4 +1,6 @@
 class KeywordsController < ApplicationController
+    # include NewsHelper
+
     before_action :logged_in_user
     before_action :correct_user,   only: :destroy
     def index
@@ -10,7 +12,6 @@ class KeywordsController < ApplicationController
 
     def show
         @keyword = Keyword.find(params[:id])
-        @keywords = Keyword.where(id: users_keyword_ids)
         @news = News.where(keyword_id: @keyword.id).paginate(page: params[:page])
     end
 
@@ -20,6 +21,9 @@ class KeywordsController < ApplicationController
             #未登録のキーワードの時、登録処理を行う
             @keyword = current_user.keywords.build(keyword_params)
             if current_user.save
+                #ニュースを取得する
+                @keyword = Keyword.find_by(name: params[:keyword][:name])
+                keyword_get_news(keyword: @keyword.name,keyword_id: @keyword.id)
                 flash[:success] = "キーワード登録が完了!"
                 redirect_to keywords_url
             else

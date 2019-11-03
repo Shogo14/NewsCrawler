@@ -20,6 +20,7 @@ module NewsHelper
         return arr
     end
 
+    #キーワードからニュースをDBにインサート
     def keyword_get_news(keyword: "",keyword_id: nil)
         url = make_url(keyword)
         titles_urls = keyword_topic_url(url)

@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_10_16_052957) do
     t.text "content"
     t.string "img_src"
     t.string "url"
-    t.date "delivery_date"
+    t.datetime "delivery_date"
     t.boolean "delete_flg"
     t.bigint "keyword_id"
     t.datetime "created_at", null: false

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
+
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
@@ -8,8 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @keywords = current_user.keywords
-    @news = News.where(keyword_id: @keywords.ids).order(delivery_date: "DESC").paginate(page: params[:page])
+    @news = News.where(keyword_id: own_keywords.ids).paginate(page: params[:page])
     @keyword = current_user.keywords.build if logged_in?
     redirect_to root_url and return unless current_user.activated?
   end
@@ -50,18 +51,18 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
 
-  # 正しいユーザーかどうか確認
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
-  end
+    # 正しいユーザーかどうか確認
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
 
-  # 管理者かどうか確認
-  def admin_user
-    redirect_to(root_url) unless current_user.admin?
-  end
+    # 管理者かどうか確認
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
 end
