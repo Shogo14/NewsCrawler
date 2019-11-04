@@ -23,19 +23,22 @@ module NewsHelper
     #キーワードからニュースをDBにインサート
     def keyword_get_news(keyword: "",keyword_id: nil)
         url = make_url(keyword)
-        titles_urls = keyword_topic_url(url)
+        titles_urls = keyword_title_url(url)
         titles_urls.each do |title,url|
-            content = get_contents(url)
-            img_src = get_img_url(url)
-            delivery_date = get_deliveryDate(url)
-            keyword_insert(title:         title,
-                           content:       content,
-                           img_src:       img_src,
-                           url:           url,
-                           delivery_date: delivery_date,
-                           delete_flg:    false,
-                           keyword_id:    keyword_id
-                           )
+            #ニュースが存在しない場合
+            unless News.find_by(title: title, url: url)
+                content = get_contents(url)
+                img_src = get_img_url(url)
+                delivery_date = get_deliveryDate(url)
+                keyword_insert(title:         title,
+                            content:       content,
+                            img_src:       img_src,
+                            url:           url,
+                            delivery_date: delivery_date,
+                            delete_flg:    false,
+                            keyword_id:    keyword_id
+                            )
+            end
         end
     end
 
@@ -51,8 +54,9 @@ module NewsHelper
                         )
     end
 
+
     # KEYWORDからタイトルとURLを取得
-    def keyword_topic_url(url)
+    def keyword_title_url(url)
         
         doc = get_object(url)
         #Yahoo
@@ -113,12 +117,22 @@ module NewsHelper
 
         doc.css('div.hdLogoWrap p.source').each {|node| delivery_date = node.text}
         unless delivery_date.nil?
-            delivery_date = delivery_date.sub!(/配信/, '').sub!(/\([月火水木金土日]\)/, '')  
-            delivery_date = Time.strptime(delivery_date, "%m/%d %H:%M")
+            if delivery_date.is_a?(String)
+                delivery_date = delivery_date.sub!(/\([月火水木金土日]\)/, '')
+                delivery_date = delivery_date.delete("配信", '').delete("時事通信", '')
+                delivery_date = Time.strptime(delivery_date, "%m/%d %H:%M")
+            end
         else
             doc.css('p.ymuiDate').each {|node| delivery_date = node.text}
-            delivery_date = delivery_date.sub!(/配信/, '').sub!(/\([月火水木金土日]\)/, '').sub!(/時事通信/, '') 
-            delivery_date = Time.strptime(delivery_date, "%m/%d %H:%M")
+            unless delivery_date.nil?
+                if delivery_date.is_a?(String)
+                    delivery_date = delivery_date.sub!(/\([月火水木金土日]\)/, '')
+                    delivery_date = delivery_date.delete("配信", '').delete("時事通信", '')
+                    delivery_date = Time.strptime(delivery_date, "%m/%d %H:%M")
+                end
+            else
+                delivery_date = "1999/01/01 00:00:00"
+            end
         end
         
         return delivery_date
