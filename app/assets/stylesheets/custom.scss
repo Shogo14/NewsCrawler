@@ -74,6 +74,24 @@ body {
     }
   }
 
+  /**/
+  .main_container{
+    background-image: url("/news-paper-background.jpg");
+    height: 800px;
+    background-size: cover;
+  }
+
+  .home_titles{
+    color:white;
+  }
+
+  h1.home_titles{
+    font-size:5em;
+  }
+  h2.home_titles{
+    font-size:2em;
+  }
+
   /* footer */
   
   footer {
@@ -329,3 +347,5 @@ span.picture {
 .news-info > h1{
   font-size:40px;
 }
+
+
