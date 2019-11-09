@@ -1,11 +1,12 @@
-<div class="center">
-<% provide(:title, "Home") %>
-<h1 class="home_titles">News Crawler</h1>
-<h2 class="home_titles">あなたが気になるニュースを、あなたの代わりに集めます。</h2>
+<div class="cover">
+        <div class="center">
+                <% provide(:title, "Home") %>
+                <h1 class="home_titles">News Crawler</h1>
+                <h2 class="home_titles">あなたが気になるニュースを、あなたの代わりに集めます。</h2>
 
-<%= link_to "アカウントを作ってみよう！", signup_path, class: "btn btn-lg btn-primary" %>
-<%= form_for(:session, url: "/testlogin") do |f| %>
-        <%= f.submit "テストアカウントでログイン", class: "btn btn-lg btn-warning test-login" %>
-<% end %>
-
+                <%= link_to "アカウントを作ってみよう！", signup_path, class: "btn btn-lg btn-primary" %>
+                <%= form_for(:session, url: "/testlogin") do |f| %>
+                        <%= f.submit "テストアカウントでログイン", class: "btn btn-lg btn-warning test-login" %>
+                <% end %>
+        </div>
 </div>

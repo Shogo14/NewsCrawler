@@ -75,10 +75,11 @@ body {
   }
 
   /**/
-  .main_container{
+  .cover{
     background-image: url("/news-paper-background.jpg");
-    height: 800px;
     background-size: cover;
+    width: 100%;
+    height: auto;
   }
 
   .home_titles{
