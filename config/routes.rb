@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   get "password_resets/new"
   get "password_resets/edit"
   get "sessions/new"
+
+  constraints ->  request { request.session[:user_id].present? } do
+    # ログインしてる時のパス
+    root to: "news#index"
+  end
+  # ログインしてない時のパス
   root "static_pages#home"
+
   get "/help", to: "static_pages#help"
   get "/about", to: "static_pages#about"
   get "/signup", to: "users#new"
