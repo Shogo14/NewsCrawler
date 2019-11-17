@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
@@ -15,7 +17,7 @@
 #
 # and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
-guard :minitest, spring: "bin/rails test", all_on_start: false do
+guard :minitest, spring: 'bin/rails test', all_on_start: false do
   # with Minitest::Unit
   watch(%r{^test/(.*)\/?test_(.*)\.rb$})
   watch(%r{^lib/(.*/)?([^/]+)\.rb$})     { |m| "test/#{m[1]}test_#{m[2]}.rb" }
@@ -31,7 +33,7 @@ guard :minitest, spring: "bin/rails test", all_on_start: false do
   end
   watch(%r{^app/views/([^/]*?)/.*\.html\.erb$}) do |matches|
     ["test/controllers/#{matches[1]}_controller_test.rb"] +
-    integration_tests(matches[1])
+      integration_tests(matches[1])
   end
   watch(%r{^app/helpers/(.*?)_helper\.rb$}) do |matches|
     integration_tests(matches[1])
@@ -51,15 +53,15 @@ guard :minitest, spring: "bin/rails test", all_on_start: false do
   end
   watch(%r{app/views/users/*}) do
     resource_tests('users') +
-    ['test/integration/microposts_interface_test.rb']
+      ['test/integration/microposts_interface_test.rb']
   end
 end
 
 # 与えられたリソースに対応する統合テストを返す
 def integration_tests(resource = :all)
   if resource == :all
-    Dir["test/integration/*"]  else
-    Dir["test/integration/#{resource}_*.rb"]
+    Dir['test/integration/*'] else
+                                Dir["test/integration/#{resource}_*.rb"]
   end
 end
 

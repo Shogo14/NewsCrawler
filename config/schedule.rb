@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use this file to easily define all of your cron jobs.
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
@@ -19,9 +21,9 @@
 
 # Learn more: http://github.com/javan/whenever
 ENV.each { |k, v| env(k, v) }
-set :output, error: "log/crontab_error.log", standard: "log/crontab.log"
+set :output, error: 'log/crontab_error.log', standard: 'log/crontab.log'
 set :environment, :development
 
 every 5.minute do
-  rake "news_crawling:get_all_news"
+  rake 'news_crawling:get_all_news'
 end

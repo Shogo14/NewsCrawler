@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateUsersKeywords < ActiveRecord::Migration[5.2]
   def change
     create_table :users_keywords do |t|
@@ -8,5 +10,4 @@ class CreateUsersKeywords < ActiveRecord::Migration[5.2]
       t.timestamps
     end
   end
-  
 end

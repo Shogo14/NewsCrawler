@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,53 +12,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_16_052957) do
-
-  create_table "keywords", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "name"
-    t.boolean "delete_flg", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema.define(version: 20_191_016_052_957) do
+  create_table 'keywords', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.text 'name'
+    t.boolean 'delete_flg', default: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "news", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.string "img_src"
-    t.string "url"
-    t.datetime "delivery_date"
-    t.boolean "delete_flg"
-    t.bigint "keyword_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["keyword_id"], name: "index_news_on_keyword_id"
+  create_table 'news', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.string 'title'
+    t.text 'content'
+    t.string 'img_src'
+    t.string 'url'
+    t.datetime 'delivery_date'
+    t.boolean 'delete_flg'
+    t.bigint 'keyword_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['keyword_id'], name: 'index_news_on_keyword_id'
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.date "last_logined"
-    t.boolean "delete_flg"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "remember_digest"
-    t.boolean "admin", default: false
-    t.string "activation_digest"
-    t.boolean "activated", default: false
-    t.datetime "activated_at"
-    t.string "reset_digest"
-    t.datetime "reset_sent_at"
-    t.index ["email"], name: "index_users_on_email", unique: true
+  create_table 'users', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.string 'name'
+    t.string 'email'
+    t.string 'password_digest'
+    t.date 'last_logined'
+    t.boolean 'delete_flg'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'remember_digest'
+    t.boolean 'admin', default: false
+    t.string 'activation_digest'
+    t.boolean 'activated', default: false
+    t.datetime 'activated_at'
+    t.string 'reset_digest'
+    t.datetime 'reset_sent_at'
+    t.index ['email'], name: 'index_users_on_email', unique: true
   end
 
-  create_table "users_keywords", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "keyword_id"
-    t.boolean "delete_flg", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'users_keywords', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.integer 'user_id'
+    t.integer 'keyword_id'
+    t.boolean 'delete_flg', default: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_foreign_key "news", "keywords"
+  add_foreign_key 'news', 'keywords'
 end

@@ -1,6 +1,8 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
+
+require 'rails/all'
 
 Bundler.require(*Rails.groups)
 
@@ -10,6 +12,5 @@ module NewsScraping
     config.load_defaults 5.2
     config.active_record.default_timezone = :local
     config.time_zone = 'Tokyo'
-
   end
 end

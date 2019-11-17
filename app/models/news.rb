@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class News < ApplicationRecord
   belongs_to :keyword
   validates :title, uniqueness: { case_sensitive: false }, presence: true
