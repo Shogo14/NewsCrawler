@@ -31,7 +31,7 @@ gem 'turbolinks', '~> 5'
 gem 'gravtastic'
 
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'nokogiri', '~> 1.10', '>= 1.10.4'
+gem 'nokogiri', '~> 1.10'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
