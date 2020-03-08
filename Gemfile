@@ -7,7 +7,7 @@ ruby '2.5.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-sass', '>= 3.4.1'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'faker', '1.7.3'
